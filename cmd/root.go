@@ -63,13 +63,23 @@ A mutating webhook for Kubernetes, pointing the images to a new location.`,
 		//metricsRec := metrics.NewPrometheus(promReg)
 		log.Trace().Interface("config", cfg).Msg("config")
 
-		rClient, err := registry.NewECRClient(cfg.Target.AWS.Region, cfg.Target.AWS.EcrDomain(), cfg.Target.AWS.AccountID, cfg.Target.AWS.Role, cfg.Target.AWS.ECROptions.AccessPolicy, cfg.Target.AWS.ECROptions.LifecyclePolicy)
-		if err != nil {
-			log.Err(err).Msg("error connecting to registry client")
-			os.Exit(1)
+		// Create registry clients for source registries
+		sourceRegistryClients := []registry.Client{}
+		for _, reg := range cfg.Source.Registries {
+			sourceRegistryClient, err := registry.NewClient(reg)
+			if err != nil {
+				log.Err(err).Msgf("error connecting to source registry at %s", reg.GetServerAddress())
+				os.Exit(1)
+			}
+			sourceRegistryClients = append(sourceRegistryClients, sourceRegistryClient)
 		}
 
-		rClient.SetRepositoryTags(cfg.Target.AWS.ECROptions.Tags)
+		// Create a registry client for private target registry
+		targetRegistryClient, err := registry.NewClient(cfg.Target.Registry)
+		if err != nil {
+			log.Err(err).Msgf("error connecting to target registry at %s", cfg.Target.Registry.GetServerAddress())
+			os.Exit(1)
+		}
 
 		imageSwapPolicy, err := types.ParseImageSwapPolicy(cfg.ImageSwapPolicy)
 		if err != nil {
@@ -88,8 +98,11 @@ A mutating webhook for Kubernetes, pointing the images to a new location.`,
 
 		imagePullSecretProvider := setupImagePullSecretsProvider()
 
+		// Inform secret provider about managed private source registries
+		imagePullSecretProvider.SetAuthenticatedRegistries(sourceRegistryClients)
+
 		wh, err := webhook.NewImageSwapperWebhookWithOpts(
-			rClient,
+			targetRegistryClient,
 			webhook.Filters(cfg.Source.Filters),
 			webhook.ImagePullSecretsProvider(imagePullSecretProvider),
 			webhook.ImageSwapPolicy(imageSwapPolicy),

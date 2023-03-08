@@ -3,6 +3,8 @@ package registry
 import (
 	"context"
 	"encoding/base64"
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"os/exec"
 	"time"
@@ -31,8 +33,33 @@ type ECRClient struct {
 	tags            []config.Tag
 }
 
+type DockerConfig struct {
+	AuthConfigs map[string]AuthConfig `json:"auths"`
+}
+
+type AuthConfig struct {
+	Auth string `json:"auth,omitempty"`
+}
+
 func (e *ECRClient) Credentials() string {
 	return string(e.authToken)
+}
+
+func (e *ECRClient) DockerConfig() ([]byte, error) {
+	dockerConfig := DockerConfig{
+		AuthConfigs: map[string]AuthConfig{
+			e.ecrDomain: {
+				Auth: base64.StdEncoding.EncodeToString(e.authToken),
+			},
+		},
+	}
+
+	dockerConfigJson, err := json.Marshal(dockerConfig)
+	if err != nil {
+		return []byte{}, err
+	}
+
+	return dockerConfigJson, nil
 }
 
 func (e *ECRClient) CreateRepository(ctx context.Context, name string) error {
@@ -96,10 +123,6 @@ func (e *ECRClient) CreateRepository(ctx context.Context, name string) error {
 	e.cache.Set(name, "", 1)
 
 	return nil
-}
-
-func (e *ECRClient) SetRepositoryTags(tags []config.Tag) {
-	e.tags = tags
 }
 
 func (e *ECRClient) buildEcrTags() []*ecr.Tag {
@@ -192,7 +215,7 @@ func (e *ECRClient) scheduleTokenRenewal() error {
 	return nil
 }
 
-func NewECRClient(region string, ecrDomain string, targetAccount string, role string, accessPolicy string, lifecyclePolicy string) (*ECRClient, error) {
+func newECRClient(region string, ecrDomain string, targetAccount string, role string, options config.ECROptions) (*ECRClient, error) {
 	var sess *session.Session
 	var config *aws.Config
 	if role != "" {
@@ -239,8 +262,9 @@ func NewECRClient(region string, ecrDomain string, targetAccount string, role st
 		cache:           cache,
 		scheduler:       scheduler,
 		targetAccount:   targetAccount,
-		accessPolicy:    accessPolicy,
-		lifecyclePolicy: lifecyclePolicy,
+		accessPolicy:    options.AccessPolicy,
+		lifecyclePolicy: options.LifecyclePolicy,
+		tags:            options.Tags,
 	}
 
 	if err := client.scheduleTokenRenewal(); err != nil {
@@ -248,6 +272,17 @@ func NewECRClient(region string, ecrDomain string, targetAccount string, role st
 	}
 
 	return client, nil
+}
+
+// For testing purposes
+func NewDummyECRClient(region string, targetAccount string, role string, options config.ECROptions, authToken []byte) *ECRClient {
+	return &ECRClient{
+		targetAccount:   targetAccount,
+		accessPolicy:    options.AccessPolicy,
+		lifecyclePolicy: options.LifecyclePolicy,
+		ecrDomain:       fmt.Sprintf("%s.dkr.ecr.%s.amazonaws.com", targetAccount, region),
+		authToken:       authToken,
+	}
 }
 
 func NewMockECRClient(ecrClient ecriface.ECRAPI, region string, ecrDomain string, targetAccount, role string) (*ECRClient, error) {

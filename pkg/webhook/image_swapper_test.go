@@ -3,7 +3,6 @@ package webhook
 import (
 	"context"
 	"encoding/json"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"testing"
@@ -226,7 +225,7 @@ func TestHelperProcess(t *testing.T) {
 }
 
 func readAdmissionReviewFromFile(filename string) (*admissionv1.AdmissionReview, error) {
-	data, err := ioutil.ReadFile("../../test/requests/" + filename)
+	data, err := os.ReadFile("../../test/requests/" + filename)
 	if err != nil {
 		return nil, err
 	}
