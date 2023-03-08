@@ -122,7 +122,7 @@ func TestHelmDeployment(t *testing.T) {
 		// Tag with "local" to ensure kind is not pulling from the GitHub Registry
 		shell.RunCommand(t, shell.Command{
 			Command: "docker",
-			Args:    []string{"tag", "ghcr.io/estahn/k8s-image-swapper:latest", "local/k8s-image-swapper:latest"},
+			Args:    []string{"tag", "ghcr.io/backmarket-oss/k8s-image-swapper:latest", "local/k8s-image-swapper:latest"},
 		})
 
 		// Load generated docker image into kind
@@ -177,7 +177,7 @@ func TestHelmDeployment(t *testing.T) {
 
 		// Deploy the chart using `helm install`. Note that we use the version without `E`, since we want to assert the
 		// install succeeds without any errors.
-		helm.Install(t, options, "estahn/k8s-image-swapper", releaseName)
+		helm.Install(t, options, "backmarket-oss/k8s-image-swapper", releaseName)
 	})
 
 	test_structure.RunTestStage(t, "validate", func() {

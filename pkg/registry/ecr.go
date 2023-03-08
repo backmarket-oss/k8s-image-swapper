@@ -13,8 +13,8 @@ import (
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/ecr"
 	"github.com/aws/aws-sdk-go/service/ecr/ecriface"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/config"
 	"github.com/dgraph-io/ristretto"
-	"github.com/estahn/k8s-image-swapper/pkg/config"
 	"github.com/go-co-op/gocron"
 	"github.com/rs/zerolog/log"
 )

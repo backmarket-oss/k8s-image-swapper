@@ -21,7 +21,7 @@ THE SOFTWARE.
 */
 package main
 
-import "github.com/estahn/k8s-image-swapper/cmd"
+import "github.com/backmarket-oss/k8s-image-swapper/cmd"
 
 func main() {
 	cmd.Execute()

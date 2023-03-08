@@ -57,7 +57,7 @@ Contact me via [email](mailto:enrico.stahn@gmail.com) to discuss.
 
 ## :octocat: Badges
 
-[![Release](https://img.shields.io/github/release/estahn/k8s-image-swapper.svg?style=for-the-badge)](https://github.com/estahn/k8s-image-swapper/releases/latest)
+[![Release](https://img.shields.io/github/release/estahn/k8s-image-swapper.svg?style=for-the-badge)](https://github.com/backmarket-oss/k8s-image-swapper/releases/latest)
 [![Artifact Hub](https://img.shields.io/badge/Artifact_Hub-417598?style=for-the-badge&logo=artifacthub&logoColor=white)](https://artifacthub.io/packages/helm/estahn/k8s-image-swapper)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=for-the-badge)](/LICENSE.md)
 [![Codecov branch](https://img.shields.io/codecov/c/github/estahn/k8s-image-swapper/main.svg?style=for-the-badge)](https://codecov.io/gh/estahn/k8s-image-swapper)

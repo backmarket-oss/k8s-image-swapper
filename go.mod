@@ -1,4 +1,4 @@
-module github.com/estahn/k8s-image-swapper
+module github.com/backmarket-oss/k8s-image-swapper
 
 go 1.18
 

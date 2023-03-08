@@ -20,7 +20,7 @@ Prerequisites:
 Clone `k8s-image-swapper` anywhere:
 
 ```sh
-git clone git@github.com:estahn/k8s-image-swapper.git
+git clone git@github.com:backmarket-oss/k8s-image-swapper.git
 ```
 
 Install the build and lint dependencies:
