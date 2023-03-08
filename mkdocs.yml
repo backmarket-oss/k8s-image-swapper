@@ -1,13 +1,13 @@
 # Project information
 site_name: k8s-image-swapper
-site_url: https://estahn.github.io/k8s-image-swapper/
+site_url: https://backmarket-oss.github.io/k8s-image-swapper/
 site_author: Enrico Stahn
 site_description: >-
   Mirror images into your own registry and swap image references automatically.
 
 # Repository
-repo_name: estahn/k8s-image-swapper
-repo_url: https://github.com/estahn/k8s-image-swapper
+repo_name: backmarket-oss/k8s-image-swapper
+repo_url: https://github.com/backmarket-oss/k8s-image-swapper
 edit_uri: "blob/main/docs/"
 
 # Copyright
