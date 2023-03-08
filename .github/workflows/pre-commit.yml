@@ -3,14 +3,14 @@ name: pre-commit
 on:
   pull_request:
   push:
-    branches: [master]
+    branches: [main-bm]
 
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
 
-    # don't run this on the master branch
-    if: github.ref != 'refs/heads/master'
+    # don't run this on the main-bm branch
+    if: github.ref != 'refs/heads/main-bm'
 
     steps:
       - uses: actions/checkout@v3

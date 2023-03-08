@@ -1,9 +1,6 @@
 env:
   - GO111MODULE=on
 
-gomod:
-  proxy: true
-
 builds:
   - env:
       - CGO_ENABLED=0
@@ -22,11 +19,11 @@ builds:
 
 dockers:
   - image_templates:
-      - "ghcr.io/estahn/k8s-image-swapper:latest-amd64"
-      - "ghcr.io/estahn/k8s-image-swapper:{{ .Version }}-amd64"
-      - "ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-amd64"
-      - "ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}-amd64"
-      - "ghcr.io/estahn/k8s-image-swapper:{{ .Major }}-amd64"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:latest-amd64"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Version }}-amd64"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-amd64"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}-amd64"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}-amd64"
     use: buildx
     dockerfile: Dockerfile
     goarch: amd64
@@ -41,11 +38,11 @@ dockers:
       - "--build-arg=VCS_REF={{.FullCommit}}"
       - "--platform=linux/amd64"
   - image_templates:
-      - "ghcr.io/estahn/k8s-image-swapper:latest-arm64v8"
-      - "ghcr.io/estahn/k8s-image-swapper:{{ .Version }}-arm64v8"
-      - "ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm64v8"
-      - "ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}-arm64v8"
-      - "ghcr.io/estahn/k8s-image-swapper:{{ .Major }}-arm64v8"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:latest-arm64v8"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Version }}-arm64v8"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm64v8"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}-arm64v8"
+      - "ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}-arm64v8"
     use: buildx
     dockerfile: Dockerfile
     goarch: arm64
@@ -61,26 +58,26 @@ dockers:
     - "--platform=linux/arm64/v8"
 
 docker_manifests:
-  - name_template: ghcr.io/estahn/k8s-image-swapper:latest
+  - name_template: ghcr.io/backmarket-oss/k8s-image-swapper:latest
     image_templates:
-    - ghcr.io/estahn/k8s-image-swapper:latest-amd64
-    - ghcr.io/estahn/k8s-image-swapper:latest-arm64v8
-  - name_template: ghcr.io/estahn/k8s-image-swapper:{{ .Version }}
+    - ghcr.io/backmarket-oss/k8s-image-swapper:latest-amd64
+    - ghcr.io/backmarket-oss/k8s-image-swapper:latest-arm64v8
+  - name_template: ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Version }}
     image_templates:
-    - ghcr.io/estahn/k8s-image-swapper:{{ .Version }}-amd64
-    - ghcr.io/estahn/k8s-image-swapper:{{ .Version }}-arm64v8
-  - name_template: ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}
+    - ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Version }}-amd64
+    - ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Version }}-arm64v8
+  - name_template: ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}
     image_templates:
-    - ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-amd64
-    - ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm64v8
-  - name_template: ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}
+    - ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-amd64
+    - ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm64v8
+  - name_template: ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}
     image_templates:
-    - ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}-amd64
-    - ghcr.io/estahn/k8s-image-swapper:{{ .Major }}.{{ .Minor }}-arm64v8
-  - name_template: ghcr.io/estahn/k8s-image-swapper:{{ .Major }}
+    - ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}-amd64
+    - ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}.{{ .Minor }}-arm64v8
+  - name_template: ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}
     image_templates:
-    - ghcr.io/estahn/k8s-image-swapper:{{ .Major }}-amd64
-    - ghcr.io/estahn/k8s-image-swapper:{{ .Major }}-arm64v8
+    - ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}-amd64
+    - ghcr.io/backmarket-oss/k8s-image-swapper:{{ .Major }}-arm64v8
 
 release:
   prerelease: auto
