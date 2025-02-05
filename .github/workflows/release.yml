@@ -1,32 +1,32 @@
-name: Release
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main-v1.5.22-fix-ttl
+# name: Release
+# on:
+#   workflow_dispatch:
+#   push:
+#     branches:
+#       - main-v1.5.22-fix-ttl
 
-jobs:
-  release:
-    permissions:
-      contents: write
-      pull-requests: write
-    runs-on: ubuntu-latest
-    outputs:
-      tag_name: ${{ steps.release-drafter.outputs.tag_name }}
-    steps:
-      - id: release-drafter
-        uses: release-drafter/release-drafter@v6
-        with:
-          publish: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# jobs:
+#   release:
+#     permissions:
+#       contents: write
+#       pull-requests: write
+#     runs-on: ubuntu-latest
+#     outputs:
+#       tag_name: v1.5.22-bm
+#     steps:
+#       - id: release-drafter
+#         uses: release-drafter/release-drafter@v6
+#         with:
+#           publish: true
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy:
-    needs: [release]
-    uses: ./.github/workflows/deploy.yml
-    secrets: inherit
-    permissions:
-      packages: write
-      contents: write
-    with:
-      forRef: ${{ needs.release.outputs.tag_name }}
+#   deploy:
+#     needs: [release]
+#     uses: ./.github/workflows/deploy.yml
+#     secrets: inherit
+#     permissions:
+#       packages: write
+#       contents: write
+#     with:
+#       forRef: ${{ needs.release.outputs.tag_name }}
