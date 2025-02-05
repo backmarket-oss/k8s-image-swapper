@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - v1.5.22-bm
+      - tag-v1.5.22-bm
       - 'releases/*'
     paths-ignore:
       - 'docs/**'

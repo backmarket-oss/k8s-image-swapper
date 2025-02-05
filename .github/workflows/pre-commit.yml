@@ -3,14 +3,14 @@ name: pre-commit
 on:
   pull_request:
   push:
-    branches: [v1.5.22-bm]
+    branches: [tag-v1.5.22-bm]
 
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
 
-    # don't run this on the v1.5.22-bm branch
-    if: github.ref != 'refs/heads/v1.5.22-bm'
+    # don't run this on the tag-v1.5.22-bm branch
+    if: github.ref != 'refs/heads/tag-v1.5.22-bm'
 
     steps:
       - uses: actions/checkout@v4
