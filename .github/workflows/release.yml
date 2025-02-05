@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main-v1.5.22-fix-ttl
+      - v1.5.22-bm
 
 jobs:
   release:
