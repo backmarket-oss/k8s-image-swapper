@@ -71,12 +71,12 @@ jobs:
     - name: Test
       run: go test -coverprofile cover.out ./...
 
-    - uses: codecov/codecov-action@v5
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./cover.out # optional
-        fail_ci_if_error: true
-        verbose: true
+    # - uses: codecov/codecov-action@v5
+    #   with:
+    #     token: ${{ secrets.CODECOV_TOKEN }}
+    #     file: ./cover.out # optional
+    #     fail_ci_if_error: true
+    #     verbose: true
 
   # image-scan:
   #   name: Image Scan
