@@ -77,9 +77,10 @@ func TestEcrImageExistsCaching(t *testing.T) {
 			expectCached:          false,
 		},
 		{
-			name:            "cache enabled with TTL and jitter",
-			cacheTtlMinutes: 60,
-			expectCached:    true,
+			name:                  "cache enabled with TTL and jitter",
+			cacheTtlMinutes:       60,
+			cacheJitterMaxMinutes: 60,
+			expectCached:          true,
 		},
 	}
 
