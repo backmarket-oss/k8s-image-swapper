@@ -122,7 +122,7 @@ func TestHelmDeployment(t *testing.T) {
 		// Tag with "local" to ensure kind is not pulling from the GitHub Registry
 		shell.RunCommand(t, shell.Command{
 			Command: "docker",
-			Args:    []string{"tag", "ghcr.io/estahn/k8s-image-swapper:latest", "local/k8s-image-swapper:latest"},
+			Args:    []string{"tag", "ghcr.io/backmarket-oss/k8s-image-swapper:latest", "local/k8s-image-swapper:latest"},
 		})
 
 		// Load generated docker image into kind

@@ -129,7 +129,7 @@ jobs:
   #     uses: anchore/scan-action@v6
   #     id: scan
   #     with:
-  #       image: "ghcr.io/estahn/k8s-image-swapper:latest"
+  #       image: "ghcr.io/backmarket-oss/k8s-image-swapper:latest"
   #       fail-build: false
   #       acs-report-enable: true
 
