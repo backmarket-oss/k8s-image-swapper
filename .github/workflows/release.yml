@@ -13,4 +13,4 @@ jobs:
       packages: write
       contents: write
     with:
-      forRef: tag-v1.5.22-bm
+      forRef: v1.5.22-bm
