@@ -99,6 +99,8 @@ func TestEcrImageExistsCaching(t *testing.T) {
 			exists := client.ImageExists(ctx, imageRef)
 			assert.Equal(t, tc.expectCached, exists)
 
+			time.Sleep(1000 * time.Millisecond)
+
 			if tc.expectCached {
 				// Verify cache expiry
 				time.Sleep(time.Duration(150 * time.Millisecond)) // Use milliseconds for testing
