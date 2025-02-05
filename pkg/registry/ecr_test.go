@@ -65,14 +65,16 @@ func TestEcrImageExistsCaching(t *testing.T) {
 	assert.NoError(t, err)
 
 	tests := []struct {
-		name            string
-		cacheTtlMinutes int
-		expectCached    bool
+		name                  string
+		cacheTtlMinutes       int
+		cacheJitterMaxMinutes int
+		expectCached          bool
 	}{
 		{
-			name:            "cache disabled when TTL is 0",
-			cacheTtlMinutes: 0,
-			expectCached:    false,
+			name:                  "cache disabled when TTL is 0",
+			cacheTtlMinutes:       0,
+			cacheJitterMaxMinutes: 0,
+			expectCached:          false,
 		},
 		{
 			name:            "cache enabled with TTL and jitter",
@@ -90,16 +92,16 @@ func TestEcrImageExistsCaching(t *testing.T) {
 			client.cache = cache
 			client.cacheTtlMinutes = tc.cacheTtlMinutes
 
-			// Create a test image reference and add to cache. Use 1000ms as TTL
+			// Create a test image reference and add to cache. Use 100ms as TTL
 			imageRef, err := alltransports.ParseImageName("docker://12345678912.dkr.ecr.us-east-1.amazonaws.com/test-project/repo/test-image:latest")
-			cache.SetWithTTL(imageRef.DockerReference().String(), true, 1, 1000*time.Millisecond)
+			cache.SetWithTTL(imageRef.DockerReference().String(), true, 1, 10*time.Second)
 			assert.NoError(t, err)
 
-			// Cache should be a hit
+			// Cache should be a hit or miss
 			exists := client.ImageExists(ctx, imageRef)
 			assert.Equal(t, tc.expectCached, exists)
 
-			time.Sleep(1000 * time.Millisecond)
+			time.Sleep(10 * time.Second)
 
 			if tc.expectCached {
 				// Verify cache expiry
