@@ -90,9 +90,9 @@ func TestEcrImageExistsCaching(t *testing.T) {
 			client.cache = cache
 			client.cacheTtlMinutes = tc.cacheTtlMinutes
 
-			// Create a test image reference and add to cache. Use 100ms as TTL
+			// Create a test image reference and add to cache. Use 1000ms as TTL
 			imageRef, err := alltransports.ParseImageName("docker://12345678912.dkr.ecr.us-east-1.amazonaws.com/test-project/repo/test-image:latest")
-			cache.SetWithTTL(imageRef.DockerReference().String(), true, 1, 100*time.Millisecond)
+			cache.SetWithTTL(imageRef.DockerReference().String(), true, 1, 1000*time.Millisecond)
 			assert.NoError(t, err)
 
 			// Cache should be a hit
