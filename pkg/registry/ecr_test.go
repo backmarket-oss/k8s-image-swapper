@@ -6,7 +6,7 @@ import (
 
 	"github.com/containers/image/v5/transports/alltransports"
 
-	"github.com/estahn/k8s-image-swapper/pkg/config"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/config"
 	"github.com/stretchr/testify/assert"
 )
 

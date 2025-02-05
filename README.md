@@ -43,7 +43,7 @@ You have questions, need support and or just want to talk about `k8s-image-swapp
 Here are ways to get in touch with the community:
 
 [![Slack channel](https://img.shields.io/badge/Slack_Channel-4A154B?style=for-the-badge&logo=slack&logoColor=white)](http://slack.kubernetes.io/)
-[![GitHub Discussions](https://img.shields.io/badge/GITHUB_DISCUSSION-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/estahn/k8s-image-swapper/discussions)
+[![GitHub Discussions](https://img.shields.io/badge/GITHUB_DISCUSSION-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/backmarket-oss/k8s-image-swapper/discussions)
 
 
 ## :heart_decoration: Sponsor
@@ -58,11 +58,11 @@ Contact me via [email](mailto:enrico.stahn@gmail.com) to discuss.
 
 ## :octocat: Badges
 
-[![Release](https://img.shields.io/github/release/estahn/k8s-image-swapper.svg?style=for-the-badge)](https://github.com/estahn/k8s-image-swapper/releases/latest)
+[![Release](https://img.shields.io/github/release/estahn/k8s-image-swapper.svg?style=for-the-badge)](https://github.com/backmarket-oss/k8s-image-swapper/releases/latest)
 [![Artifact Hub](https://img.shields.io/badge/Artifact_Hub-417598?style=for-the-badge&logo=artifacthub&logoColor=white)](https://artifacthub.io/packages/helm/estahn/k8s-image-swapper)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=for-the-badge)](/LICENSE.md)
 [![Codecov branch](https://img.shields.io/codecov/c/github/estahn/k8s-image-swapper/main.svg?style=for-the-badge)](https://codecov.io/gh/estahn/k8s-image-swapper)
-[![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=for-the-badge)](http://godoc.org/github.com/estahn/k8s-image-swapper)
+[![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=for-the-badge)](http://godoc.org/github.com/backmarket-oss/k8s-image-swapper)
 
 ## :star2: Stargazers over time
 

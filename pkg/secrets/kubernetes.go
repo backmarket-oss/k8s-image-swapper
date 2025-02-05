@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/estahn/k8s-image-swapper/pkg/registry"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/registry"
 	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/rs/zerolog/log"
 	v1 "k8s.io/api/core/v1"

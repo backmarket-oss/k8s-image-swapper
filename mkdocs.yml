@@ -7,7 +7,7 @@ site_description: >-
 
 # Repository
 repo_name: estahn/k8s-image-swapper
-repo_url: https://github.com/estahn/k8s-image-swapper
+repo_url: https://github.com/backmarket-oss/k8s-image-swapper
 edit_uri: "blob/main/docs/"
 
 # Copyright
@@ -123,9 +123,9 @@ extra:
     default: latest
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/estahn/k8s-image-swapper
+      link: https://github.com/backmarket-oss/k8s-image-swapper
     - icon: fontawesome/brands/docker
-      link: https://github.com/estahn/k8s-image-swapper/pkgs/container/k8s-image-swapper
+      link: https://github.com/backmarket-oss/k8s-image-swapper/pkgs/container/k8s-image-swapper
     - icon: fontawesome/brands/slack
       link: https://kubernetes.slack.com/archives/C04LETF7KEC
     - icon: fontawesome/brands/twitter

@@ -3,7 +3,7 @@ package secrets
 import (
 	"context"
 
-	"github.com/estahn/k8s-image-swapper/pkg/registry"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/registry"
 	v1 "k8s.io/api/core/v1"
 )
 

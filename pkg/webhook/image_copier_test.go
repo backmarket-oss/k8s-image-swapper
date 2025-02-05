@@ -7,8 +7,8 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/ecr"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/registry"
 	"github.com/containers/image/v5/transports/alltransports"
-	"github.com/estahn/k8s-image-swapper/pkg/registry"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	corev1 "k8s.io/api/core/v1"

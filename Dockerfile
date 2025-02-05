@@ -15,16 +15,16 @@ ENTRYPOINT ["/k8s-image-swapper"]
 ARG BUILD_DATE
 ARG VCS_REF
 
-LABEL maintainer="k8s-image-swapper <https://github.com/estahn/k8s-image-swapper/issues>" \
+LABEL maintainer="k8s-image-swapper <https://github.com/backmarket-oss/k8s-image-swapper/issues>" \
       org.opencontainers.image.title="k8s-image-swapper" \
       org.opencontainers.image.description="Mirror images into your own registry and swap image references automatically." \
-      org.opencontainers.image.url="https://github.com/estahn/k8s-image-swapper" \
-      org.opencontainers.image.source="https://github.com/estahn/k8s-image-swapper" \
+      org.opencontainers.image.url="https://github.com/backmarket-oss/k8s-image-swapper" \
+      org.opencontainers.image.source="https://github.com/backmarket-oss/k8s-image-swapper" \
       org.opencontainers.image.vendor="estahn" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.name="k8s-image-swapper" \
       org.label-schema.description="Mirror images into your own registry and swap image references automatically." \
-      org.label-schema.url="https://github.com/estahn/k8s-image-swapper" \
+      org.label-schema.url="https://github.com/backmarket-oss/k8s-image-swapper" \
       org.label-schema.vcs-url="git@github.com:estahn/k8s-image-swapper.git" \
       org.label-schema.vendor="estahn" \
       org.opencontainers.image.revision="$VCS_REF" \

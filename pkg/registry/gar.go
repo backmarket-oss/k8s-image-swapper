@@ -11,10 +11,10 @@ import (
 	"time"
 
 	artifactregistry "cloud.google.com/go/artifactregistry/apiv1"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/config"
 	"github.com/containers/image/v5/docker/reference"
 	ctypes "github.com/containers/image/v5/types"
 	"github.com/dgraph-io/ristretto"
-	"github.com/estahn/k8s-image-swapper/pkg/config"
 	"github.com/go-co-op/gocron"
 	"google.golang.org/api/option"
 	"google.golang.org/api/transport"

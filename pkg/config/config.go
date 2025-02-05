@@ -27,7 +27,7 @@ import (
 
 	"github.com/spf13/viper"
 
-	"github.com/estahn/k8s-image-swapper/pkg/types"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/types"
 )
 
 const DefaultImageCopyDeadline = 8 * time.Second

@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/estahn/k8s-image-swapper/pkg/config"
-	"github.com/estahn/k8s-image-swapper/pkg/types"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/config"
+	"github.com/backmarket-oss/k8s-image-swapper/pkg/types"
 
 	ctypes "github.com/containers/image/v5/types"
 )
