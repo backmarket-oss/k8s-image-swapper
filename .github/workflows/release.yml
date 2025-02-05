@@ -6,28 +6,11 @@ on:
       - tag-v1.5.22-bm
 
 jobs:
-  release:
-    permissions:
-      contents: write
-      pull-requests: write
-    runs-on: ubuntu-latest
-    outputs:
-      tag_name: tag-v1.5.22-bm
-    steps:
-      - id: release-drafter
-        uses: release-drafter/release-drafter@v6
-        with:
-          publish: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GORELEASER_CURRENT_TAG: v1.5.21
-
   deploy:
-    needs: [release]
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
     permissions:
       packages: write
       contents: write
     with:
-      forRef: ${{ needs.release.outputs.tag_name }}
+      forRef: tag-v1.5.22-bm
